@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="famaDBModelStoreContainer" CdmEntityContainer="famaDBEntities">
+    <EntitySetMapping Name="departments">
+      <EntityTypeMapping TypeName="famaDBModel.departments">
+        <MappingFragment StoreEntitySet="departments">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="managerID" ColumnName="managerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="employees">
+      <EntityTypeMapping TypeName="famaDBModel.employees">
+        <MappingFragment StoreEntitySet="employees">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="fullname" ColumnName="fullname" />
+          <ScalarProperty Name="startWorkYear" ColumnName="startWorkYear" />
+          <ScalarProperty Name="departmentID" ColumnName="departmentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="employeesShifts">
+      <EntityTypeMapping TypeName="famaDBModel.employeesShifts">
+        <MappingFragment StoreEntitySet="employeesShifts">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="employeeID" ColumnName="employeeID" />
+          <ScalarProperty Name="shiftID" ColumnName="shiftID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="logs">
+      <EntityTypeMapping TypeName="famaDBModel.logs">
+        <MappingFragment StoreEntitySet="logs">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="actions" ColumnName="actions" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="shifts">
+      <EntityTypeMapping TypeName="famaDBModel.shifts">
+        <MappingFragment StoreEntitySet="shifts">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="startTime" ColumnName="startTime" />
+          <ScalarProperty Name="endTime" ColumnName="endTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="famaDBModel.users">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="fullname" ColumnName="fullname" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="numOfActions" ColumnName="numOfActions" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
