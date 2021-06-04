@@ -9,12 +9,13 @@ namespace FAMA_RESTAPI.Models
     {
         famaDBEntities db = new famaDBEntities();
 
-
+        
         public string addAction(int id)
         {
             var currentUser = db.logs.Where(l => l.userID == id).First();
             currentUser.actions += 1;
             db.SaveChanges();
+            Console.WriteLine("hi");
             return "user id: " + currentUser.userID + " +1 action";
         }
 
