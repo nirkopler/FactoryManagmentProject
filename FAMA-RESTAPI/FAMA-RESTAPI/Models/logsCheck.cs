@@ -5,9 +5,11 @@ using System.Web;
 
 namespace FAMA_RESTAPI.Models
 {
-    public class logsBL
+    public class logsCheck
     {
         famaDBEntities db = new famaDBEntities();
+
+
         public string addAction(int id)
         {
             var currentUser = db.logs.Where(l => l.userID == id).First();

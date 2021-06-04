@@ -8,7 +8,6 @@ namespace FAMA_RESTAPI.Models
     public class loginBL
     {
         famaDBEntities db = new famaDBEntities();
-        logsBL logsBL = new logsBL();
         public users isUserExist(users user)
         {
             //check if user exists

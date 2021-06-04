@@ -16,7 +16,8 @@ async function loginCheck() {
         const res = await fetch("https://localhost:44351/api/Login", fetchParams);
         const data = await res.json(); 
         console.log(data);
-    //check if user exist or not
+    
+        //check if user exist or not
     if(data != null) {
         sessionStorage.setItem("username", data.username);
         sessionStorage.setItem("fullname", data.fullname);
@@ -24,7 +25,7 @@ async function loginCheck() {
         sessionStorage.setItem("numOfActions", data.numOfActions);
         sessionStorage.setItem("actions", 0);
 
-        window.location.href = "index.html?user=" + data.ID;
+        window.location.href = "index.html?userID=" + data.ID;
     } else {alert("worng user / pass")};
 }
 

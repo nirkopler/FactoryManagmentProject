@@ -40,5 +40,12 @@ namespace FAMA_RESTAPI.Controllers
         public void Delete(int id)
         {
         }
+
+        //[Route("api/Login/{num1}/{num2}")]
+        //public string Get(int num1, int num2)
+        //{
+        //    int sum = num1 + num2;
+        //    return "string: " + num1 + " + " + num2 + " = " + sum;
+        //}
     }
 }
