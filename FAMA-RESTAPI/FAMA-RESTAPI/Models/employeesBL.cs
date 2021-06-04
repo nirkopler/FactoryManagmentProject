@@ -8,32 +8,38 @@ namespace FAMA_RESTAPI.Models
     public class employeesBL
     {
         famaDBEntities db = new famaDBEntities();
+        private static logsCheck log = new logsCheck();
 
-        public IEnumerable<employeesWithShifts> geAllEmployees()
+        public IEnumerable<employeesWithShifts> geAllEmployees(int userID)
         {
-            List<employeesWithShifts> empList = new List<employeesWithShifts>();
-            foreach(var emp in db.employees)
-            {
-                employeesWithShifts employee = new employeesWithShifts();
-                employee.ID = emp.ID;
-                employee.fullname = emp.fullname;
-                employee.startWorkYear = emp.startWorkYear;
-                employee.departmentID = emp.departmentID;
-                employee.empShifts = new List<shifts>();
-                foreach (var shift in db.employeesShifts.Where(s => s.employeeID == emp.ID))
+            //add user action
+            log.addActionLog(userID);
+            //Check user actions
+            if (log.checkLogs(userID)) {
+                List<employeesWithShifts> empList = new List<employeesWithShifts>();
+                foreach(var emp in db.employees)
                 {
-                    var currentShift = db.shifts.Where(s => s.ID == shift.shiftID).First();
-                    employee.empShifts.Add(currentShift);
-                }
-                empList.Add(employee);
-            };
+                    employeesWithShifts employee = new employeesWithShifts();
+                    employee.ID = emp.ID;
+                    employee.fullname = emp.fullname;
+                    employee.startWorkYear = emp.startWorkYear;
+                    employee.departmentID = emp.departmentID;
+                    employee.empShifts = new List<shifts>();
+                    foreach (var shift in db.employeesShifts.Where(s => s.employeeID == emp.ID))
+                    {
+                        var currentShift = db.shifts.Where(s => s.ID == shift.shiftID).First();
+                        employee.empShifts.Add(currentShift);
+                    }
+                    empList.Add(employee);
+                };
 
             return empList;
+            } else { return null; }
         }
 
-        public employeesWithShifts getEmployees(int id)
+        public employeesWithShifts getEmployees(int id, int userID)
         {
-            return geAllEmployees().Where(emp => emp.ID == id).FirstOrDefault();
+            return geAllEmployees(userID).Where(emp => emp.ID == id).FirstOrDefault();
         }
 
         public void addEmployeesShift(employeesShifts shift)

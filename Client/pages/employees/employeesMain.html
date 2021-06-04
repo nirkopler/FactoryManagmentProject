@@ -9,13 +9,10 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Homepage</h1>
-    <p id="place"></p>
-    <input type="button" value="Logout" onclick="logoutBtn()">
-    <input type="button" value="action" onclick="addAction()">
-    <a href="pages/employees/employeesMain.html">employees</a>
+    <h1>Employees - Main</h1>
+    <table id="tablePlace"><!--Employees table here--></table>
 </body>
 <script>
-document.getElementById("place").innerText = sessionStorage.getItem("username");
+    window.onload = getAllEmployeesData();
 </script>
 </html>

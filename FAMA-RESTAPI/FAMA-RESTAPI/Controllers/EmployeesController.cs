@@ -15,15 +15,17 @@ namespace FAMA_RESTAPI.Controllers
         private static employeesBL bl = new employeesBL();
 
         // GET: api/Employees
-        public IEnumerable<employeesWithShifts> Get()
+        [Route("api/Employees/{userID}")]
+        public IEnumerable<employeesWithShifts> Get(int userID)
         {
-            return bl.geAllEmployees();
+            return bl.geAllEmployees(userID);
         }
 
         // GET: api/Employees/5
-        public employeesWithShifts Get(int id)
+        [Route("api/Employees/{id}/{userID}")]
+        public employeesWithShifts Get(int id, int userID)
         {
-            return bl.getEmployees(id);
+            return bl.getEmployees(id, userID);
         }
 
         // POST: api/Employees

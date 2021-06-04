@@ -9,20 +9,23 @@ namespace FAMA_RESTAPI.Models
     {
         famaDBEntities db = new famaDBEntities();
 
-        
-        public string addAction(int id)
+        public bool checkLogs(int userID)
         {
-            var currentUser = db.logs.Where(l => l.userID == id).First();
-            currentUser.actions += 1;
-            db.SaveChanges();
-            return "user id: " + currentUser.userID + " +1 action";
+            var currentUserLog = db.logs.Where(l => l.userID == userID).First();
+            var currentUser = db.users.Where(u => u.ID == userID).First();
+            if (currentUserLog.actions > currentUser.numOfActions)
+            {
+                return false;
+            }
+            return true;
         }
 
-        public bool isMaxActions(int id)
+        public void addActionLog(int userID)
         {
-            var currentUserUsers = db.users.Where(l => l.ID == id).First();
-            var currentUserLogs = db.logs.Where(l => l.userID == id).First();
-            return currentUserUsers.numOfActions > currentUserLogs.actions ? true : false;
+            var currentUserLog = db.logs.Where(l => l.userID == userID).First();
+            var currentUser = db.users.Where(u => u.ID == userID).First();
+            currentUserLog.actions++;
+            db.SaveChanges();
         }
     }
 }

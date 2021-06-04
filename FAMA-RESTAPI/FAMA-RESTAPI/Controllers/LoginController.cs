@@ -13,6 +13,7 @@ namespace FAMA_RESTAPI.Controllers
     public class LoginController : ApiController
     {
         private static loginBL bl = new loginBL();
+        private static logsCheck log = new logsCheck();
         // GET: api/Login
         public IEnumerable<string> Get()
         {
@@ -20,9 +21,9 @@ namespace FAMA_RESTAPI.Controllers
         }
 
         // GET: api/Login/5
-        public string Get(int id)
+        public bool Get(int id)
         {
-            return "value";
+            return log.checkLogs(id);
         }
 
         // POST: api/Login

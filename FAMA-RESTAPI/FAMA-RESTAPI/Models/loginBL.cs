@@ -8,6 +8,7 @@ namespace FAMA_RESTAPI.Models
     public class loginBL
     {
         famaDBEntities db = new famaDBEntities();
+        private static logsCheck log = new logsCheck();
         public users isUserExist(users user)
         {
             //check if user exists
@@ -22,6 +23,7 @@ namespace FAMA_RESTAPI.Models
                     //check if user already log TODAY
                     if (logcheck.FirstOrDefault().date.ToShortDateString() != localDate.ToShortDateString())
                     {
+                        logcheck.FirstOrDefault().date = localDate;
                         logcheck.FirstOrDefault().actions = 0;
                         db.SaveChanges();
                     }
