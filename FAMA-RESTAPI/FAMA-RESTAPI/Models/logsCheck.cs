@@ -15,7 +15,6 @@ namespace FAMA_RESTAPI.Models
             var currentUser = db.logs.Where(l => l.userID == id).First();
             currentUser.actions += 1;
             db.SaveChanges();
-            Console.WriteLine("hi");
             return "user id: " + currentUser.userID + " +1 action";
         }
 
