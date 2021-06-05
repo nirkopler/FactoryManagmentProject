@@ -24,6 +24,8 @@ namespace FAMA_RESTAPI.Models
                     employee.fullname = emp.fullname;
                     employee.startWorkYear = emp.startWorkYear;
                     employee.departmentID = emp.departmentID;
+                    employee.departmentName = db.departments.Where(d => d.ID == emp.departmentID).First().name;
+                    employee.isManager = db.departments.Where(d => d.ID == emp.departmentID).First().managerID == emp.ID;
                     employee.empShifts = new List<shifts>();
                     foreach (var shift in db.employeesShifts.Where(s => s.employeeID == emp.ID))
                     {
@@ -56,16 +58,21 @@ namespace FAMA_RESTAPI.Models
             currentEmp.departmentID = emp.departmentID;
             db.SaveChanges();
         }
-        public void deleteEmployees(int id)
+        public void deleteEmployees(int id, int userID)
         {
-            //remove employee
-            var currentEmp = db.employees.Where(e => e.ID == id).First();
-            db.employees.Remove(currentEmp);
-            //remove employee's shifts
-            var empShifts = db.employeesShifts.Where(s => s.employeeID == id);
-            foreach (var s in empShifts) {db.employeesShifts.Remove(s);};
-            //save to DB
-            db.SaveChanges();
+            //add user action
+            log.addActionLog(userID);
+            //Check user actions
+            if (log.checkLogs(userID)) { 
+                //remove employee
+                var currentEmp = db.employees.Where(e => e.ID == id).First();
+                db.employees.Remove(currentEmp);
+                //remove employee's shifts
+                var empShifts = db.employeesShifts.Where(s => s.employeeID == id);
+                foreach (var s in empShifts) {db.employeesShifts.Remove(s);};
+                //save to DB
+                db.SaveChanges();
+            }
         }
     }
 }

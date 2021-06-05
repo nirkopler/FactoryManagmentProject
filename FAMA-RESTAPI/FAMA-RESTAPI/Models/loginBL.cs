@@ -41,5 +41,11 @@ namespace FAMA_RESTAPI.Models
                 return result.First();
             } else { return null; };
         }
+
+        public bool loginCheck(int id)
+        {
+            return log.checkLogs(id);
+        }
+
     }
 }

@@ -11,7 +11,8 @@ namespace FAMA_RESTAPI.Models
         public string fullname { get; set; }
         public int startWorkYear { get; set; }
         public int departmentID { get; set; }
-
+        public string departmentName { get; set; }
+        public bool isManager { get; set; }
         public List<shifts> empShifts { get; set; }
     }
 }

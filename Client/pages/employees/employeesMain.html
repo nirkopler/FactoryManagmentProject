@@ -5,12 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--use app.js functions-->
-    <script src="C:\Users\Nir Kopler\Desktop\WEB shit\Full Stack Pro Technion Certified Developer\TC Projects\FAMA\Client\app.js"></script>
+    <script src="..\..\app.js"></script>
     <title>Document</title>
 </head>
 <body>
     <h1>Employees - Main</h1>
-    <table id="tablePlace"><!--Employees table here--></table>
+    <table id="tablePlace">
+        <tr id="tableHeader">
+            <th>Name</th>
+            <th>Start Work Year</th>
+            <th>Department</th>
+            <th>is Manager</th>
+            <th>Shifts</th>
+        </tr>
+        <!--Employees table here-->
+    </table>
 </body>
 <script>
     window.onload = getAllEmployeesData();

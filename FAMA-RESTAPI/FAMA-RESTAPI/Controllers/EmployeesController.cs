@@ -29,6 +29,8 @@ namespace FAMA_RESTAPI.Controllers
         }
 
         // POST: api/Employees
+        [HttpPost]
+        [Route("api/Employees/{id}/{userID}")]
         public string Post(employeesShifts shift)
         {
             bl.addEmployeesShift(shift);
@@ -36,6 +38,8 @@ namespace FAMA_RESTAPI.Controllers
         }
 
         // PUT: api/Employees/5
+        [HttpPut]
+        [Route("api/Employees/{id}/{userID}")]
         public string Put(int id, employees emp)
         {
             bl.putEmployees(id, emp);
@@ -43,9 +47,11 @@ namespace FAMA_RESTAPI.Controllers
         }
 
         // DELETE: api/Employees/5
-        public string Delete(int id)
+        [HttpDelete]
+        [Route("api/Employees/{id}/{userID}")]
+        public string Delete(int id, int userID)
         {
-            bl.deleteEmployees(id);
+            bl.deleteEmployees(id, userID);
             return "ALL EMP DATA DELETED";
         }
     }

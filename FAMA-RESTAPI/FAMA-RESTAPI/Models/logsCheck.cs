@@ -7,7 +7,7 @@ namespace FAMA_RESTAPI.Models
 {
     public class logsCheck
     {
-        famaDBEntities db = new famaDBEntities();
+        private static famaDBEntities db = new famaDBEntities();
 
         public bool checkLogs(int userID)
         {
