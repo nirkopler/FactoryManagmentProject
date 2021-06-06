@@ -50,14 +50,21 @@ namespace FAMA_RESTAPI.Models
             db.SaveChanges();
         }
 
-        public void putEmployees(int id, employees emp)
+        public void putEmployees(int id, int userID, employees emp)
         {
-            var currentEmp = db.employees.Where(e => e.ID == id).First();
-            currentEmp.fullname = emp.fullname;
-            currentEmp.startWorkYear = emp.startWorkYear;
-            currentEmp.departmentID = emp.departmentID;
-            db.SaveChanges();
+            //add user action
+            log.addActionLog(userID);
+            //Check user actions
+            if (log.checkLogs(userID))
+            {
+                var currentEmp = db.employees.Where(e => e.ID == id).First();
+                currentEmp.fullname = emp.fullname;
+                currentEmp.startWorkYear = emp.startWorkYear;
+                currentEmp.departmentID = emp.departmentID;
+                db.SaveChanges();
+            }
         }
+
         public void deleteEmployees(int id, int userID)
         {
             //add user action

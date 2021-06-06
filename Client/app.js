@@ -97,3 +97,37 @@ async function deleteEmployee(id) {
         alert(data);
         location.reload();
 }
+
+//load edit page
+async function loadEditEmployee() {
+    //get all departments to select
+    const res = await fetch("https://localhost:44351/api/Departments");
+    const data = await res.json();
+    //add departments to select
+    for(let d of data) {
+        const newOpt = document.createElement("option");
+        newOpt.innerText = d.name;
+        newOpt.setAttribute("value", d.ID);
+        document.getElementById("departmentInp").appendChild(newOpt);
+    }
+}
+
+//edit certain employee
+async function editEmployee() {
+    const currentEmp = {
+        fullname : document.getElementById("nameInp").value,
+        startWorkYear : document.getElementById("startWYInp").value,
+        departmentID : document.getElementById("departmentInp").value
+    }
+    
+    const fetchParams = {
+        method : 'put',
+        body : JSON.stringify(currentEmp),
+        headers : {"Content-type" : "application/json"}
+    }
+
+    const res = await fetch("https://localhost:44351/api/Employees/"+empId+"/"+userId, fetchParams);
+    const data = await res.json();
+    alert(data);
+    window.location.href = "employeesMain.html?userId="+userId;
+}

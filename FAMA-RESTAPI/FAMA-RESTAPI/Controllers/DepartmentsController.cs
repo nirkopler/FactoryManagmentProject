@@ -13,6 +13,7 @@ namespace FAMA_RESTAPI.Controllers
     public class DepartmentsController : ApiController
     {
         private static departmentsBL bl = new departmentsBL();
+
         // GET: api/Departments
         public IEnumerable<departments> Get()
         {

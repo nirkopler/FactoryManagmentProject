@@ -40,9 +40,9 @@ namespace FAMA_RESTAPI.Controllers
         // PUT: api/Employees/5
         [HttpPut]
         [Route("api/Employees/{id}/{userID}")]
-        public string Put(int id, employees emp)
+        public string Put(int id, int userID, employees emp)
         {
-            bl.putEmployees(id, emp);
+            bl.putEmployees(id, userID, emp);
             return "EMP PUT COMPLETED";
         }
 
