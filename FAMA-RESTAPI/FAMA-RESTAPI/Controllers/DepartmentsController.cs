@@ -15,35 +15,53 @@ namespace FAMA_RESTAPI.Controllers
         private static departmentsBL bl = new departmentsBL();
 
         // GET: api/Departments
+        [HttpGet]
+        [Route("api/Departments")]
         public IEnumerable<departments> Get()
         {
             return bl.getAllDepartments();
         }
 
+        // GET: api/Departments/all/userID
+        [HttpGet]
+        [Route("api/Departments/all/{userID}")]
+        public IEnumerable<departmentsExt> GetAll(int userID)
+        {
+            return bl.getAllDepartmentsAction(userID);
+        }
+
         // GET: api/Departments/5
+        [HttpGet]
+        [Route("api/Departments/{id}")]
         public departments Get(int id)
         {
             return bl.getDepartments(id);
         }
 
         // POST: api/Departments
-        public string Post(departments dep)
+        [HttpPost]
+        [Route("api/Departments/{userID}")]
+        public string Post(int userID, departments dep)
         {
-            bl.postDepartments(dep);
+            bl.postDepartments(userID, dep);
             return "DEP DEPARTMENT CREATED";
         }
 
         // PUT: api/Departments/5
-        public string Put(int id, departments dep)
+        [HttpPut]
+        [Route("api/Departments/{id}/{userID}")]
+        public string Put(int id, int userID, departments dep)
         {
-            bl.putDepartments(id, dep);
+            bl.putDepartments(id, userID, dep);
             return "DEP DEPARTMENT EDITED";
         }
 
         // DELETE: api/Departments/5
-        public string Delete(int id)
+        [HttpDelete]
+        [Route("api/Departments/{id}/{userID}")]
+        public string Delete(int id, int userID)
         {
-            bl.deleteDepartments(id);
+            bl.deleteDepartments(id, userID);
             return "DEP DEPARTMENT DELETED";
         }
     }

@@ -8,8 +8,10 @@ window.onload = () => {
 const urlParams = new URLSearchParams(window.location.search);
 const userId = urlParams.get('userId');
 const empId = urlParams.get('empId');
+const depId = urlParams.get('depId');
 console.log("userId: " + userId);
 console.log("empId: " + empId);
+console.log("depId: " + depId);
 
 // ------------------------- LOGIN -------------------------
 
@@ -44,6 +46,7 @@ function logoutBtn() {
 }
 
 // ------------------------- EMPLOYEES -------------------------
+
 //get all data of employees and create action buttons
 async function getAllEmployeesData() {
     const res = await fetch("https://localhost:44351/api/Employees/" + userId);
@@ -130,4 +133,91 @@ async function editEmployee() {
     const data = await res.json();
     alert(data);
     window.location.href = "employeesMain.html?userId="+userId;
+}
+
+// ------------------------- DEPARTMENTS -------------------------
+
+async function getAllDepartmentsData() {
+    //get all departments (with adding action to user) to select
+    const res = await fetch("https://localhost:44351/api/Departments/all/" + userId);
+    const data = await res.json();
+    console.table(data);
+    //add departments to select
+    if(data != null) {
+        //create table with data
+        for (let d of data){
+            const newRow = tablePlace.insertRow();
+            const name = newRow.insertCell().innerText = d.name;
+            const managerID = newRow.insertCell().innerText = d.managerID;
+
+            //create CRUD actions for each epmloyee
+            const Actions = newRow.insertCell();
+            //EDIT
+            const editLink = document.createElement("a");
+            editLink.innerText = "Edit";
+            editLink.setAttribute("href", 'editDepartment.html?userId='+userId+'&'+'depId='+d.ID);
+            Actions.appendChild(editLink);
+            //DELETE - just if there is NO Epmloyees in certain Department
+            if(!d.areAnyEmployees){
+                const deleteLink = document.createElement("a");
+                deleteLink.innerText = "Delete";
+                deleteLink.setAttribute("onclick", 'deleteDepartment('+ d.ID +')');
+                deleteLink.setAttribute("href", "#");
+                Actions.appendChild(deleteLink);
+            }
+        }
+    } else {
+        alert("too many actions")
+        window.location.href = "../../login.html";
+    }
+}
+
+//delete department
+async function deleteDepartment(id) {
+    const fetchParams = {
+        method : 'delete',
+        headers : {"Content-type" : "application/json"}
+        }
+        const res = await fetch("https://localhost:44351/api/Departments/"+id+"/"+userId, fetchParams);
+        const data = await res.json(); 
+        alert(data);
+        location.reload();
+}
+
+//edit certain Department
+async function editDepartment() {
+    const currentDep = {
+        name : document.getElementById("nameInp").value,
+        managerID : document.getElementById("managerIDInp").value,
+    }
+    
+    const fetchParams = {
+        method : 'put',
+        body : JSON.stringify(currentDep),
+        headers : {"Content-type" : "application/json"}
+    }
+
+    const res = await fetch("https://localhost:44351/api/Departments/"+depId+"/"+userId, fetchParams);
+    const data = await res.json();
+    alert(data);
+    window.location.href = "departmentsMain.html?userId="+userId;
+}
+
+//add department
+async function addDepartment() {
+    const currentDep = {
+        name : document.getElementById("nameInp").value,
+        managerID : document.getElementById("managerIDInp").value,
+    }
+    
+    const fetchParams = {
+        method : 'post',
+        body : JSON.stringify(currentDep),
+        headers : {"Content-type" : "application/json"}
+    }
+
+    const res = await fetch("https://localhost:44351/api/Departments/"+userId, fetchParams);
+    const data = await res.json();
+    alert(data);
+    window.location.href = "departmentsMain.html?userId="+userId;
 }
