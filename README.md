@@ -10,7 +10,7 @@ this is a true **FullStack** project that uses technologies like:
 * ChotaCSS - lightweight CSS Framework
 
 ## Progress :muscle:
-### 9/6/2021
+### 9/6/2021 - DONE project base
 * added shifts page: table, add shift (to db) + add link to index page
 * added add shift to employee page and action
 * added in server (employeesBL) searchEmployee function
