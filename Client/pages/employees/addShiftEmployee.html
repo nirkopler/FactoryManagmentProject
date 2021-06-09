@@ -6,12 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--use app.js functions-->
     <script src="..\..\app.js"></script>
-    <title>Add Department</title>
+    <title>Add Shift To Employee</title>
 </head>
 <body>
-    <span>Name</span><input type="text" id="nameInp"><br>
-    <span>ManagerID</span><input type="text" id="managerIDInp"><br>
+
+    <span>Select Shift</span><select id="shiftsInp">
+        <!--Options From DB-->
     </select><br>
-    <input type="button" value="add department" id="saveBtn" onclick="addDepartment()">
+    <input type="button" value="add shift" id="saveBtn" onclick="addShiftToEmployee()">
 </body>
+<script>
+    window.onload = loadEditShiftEmployee();
+</script>
 </html>

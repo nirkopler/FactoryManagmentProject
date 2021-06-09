@@ -9,6 +9,12 @@ this is a true **FullStack** project that uses technologies like:
 * CSS3
 
 ## Progress :muscle:
+### 9/6/2021
+* added shifts page: table, add shift (to db) + add link to index page
+* added add shift to employee page and action
+* added in server (employeesBL) searchEmployee function
+* added search to employee main page
+
 ### 7/6/2021
 * added departments page with table
 * added add, edit, delete department
@@ -17,11 +23,17 @@ this is a true **FullStack** project that uses technologies like:
 * added edit employee + delete employee functions on client
 
 ### 5/6/2021
-* Fixed login bugs (private static)
-* Added in server action control
+* start work on serverOnlyActions-feature branch
+* fixed login bugs (private static)
+* added in server action control
+
+### 4/6/2021
+* created all controllers and BL basic to master branch
+
+### 3/6/2021 - architectural plan
+* created DB architecture
+* created Client architecture
 
 ## Things to complete :smirk: :fire:
-* create shifts page: table, add shift (to db) + add link to index
-* add shift to employee page
-* add search to employee main page
 * add logout & display username on EACH page
+* choose UI framework

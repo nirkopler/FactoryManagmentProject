@@ -10,6 +10,16 @@
 </head>
 <body>
     <h1>Employees - Main</h1>
+    <span>Search: </span>
+    <span>By: </span><select id="searchByInp">
+        <option value="fname">First Name</option>
+        <option value="lname">Last Name</option>
+        <option value="dep">Department</option>
+    </select>
+    <input type="text" id="searchInp">
+    <input type="button" value="search" 
+    onclick="window.location.href = 'searchResult.html?userId='+userId+'&'+'inp='+searchInp.value+'&'+'by='+searchByInp.value;">
+    
     <table id="tablePlace">
         <tr id="tableHeader">
             <th>Name</th>

@@ -6,21 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--use app.js functions-->
     <script src="..\..\app.js"></script>
-    <title>Departments Main Page</title>
+    <title>Search Result</title>
 </head>
 <body>
-    <h1>Departments - Main</h1>
-    <input type="button" value="addDepartment" onclick="window.location.href = 'addDepartment.html?userId=' + userId;">
+    <h1>Search Result</h1>
     <table id="tablePlace">
         <tr id="tableHeader">
             <th>Name</th>
-            <th>Manager ID</th>
-            <th>Actions</th>
+            <th>Start Work Year</th>
+            <th>Department</th>
+            <th>is Manager</th>
+            <th>Shifts</th>
         </tr>
-        <!--Departments table here-->
+        <!--Employees table here-->
     </table>
 </body>
 <script>
-    window.onload = getAllDepartmentsData();
+    window.onload = loadSearchEmployee();
 </script>
 </html>

@@ -15,6 +15,7 @@ namespace FAMA_RESTAPI.Controllers
         private static employeesBL bl = new employeesBL();
 
         // GET: api/Employees
+        [HttpGet]
         [Route("api/Employees/{userID}")]
         public IEnumerable<employeesWithShifts> Get(int userID)
         {
@@ -22,18 +23,19 @@ namespace FAMA_RESTAPI.Controllers
         }
 
         // GET: api/Employees/5
-        [Route("api/Employees/{id}/{userID}")]
-        public employeesWithShifts Get(int id, int userID)
+        [HttpGet]
+        [Route("api/Employees/search/{inp}/{by}/{userID}")]
+        public IEnumerable<employeesWithShifts> Get(string inp, string by, int userID)
         {
-            return bl.getEmployees(id, userID);
+            return bl.empSearchResult(inp, by, userID);
         }
 
         // POST: api/Employees
         [HttpPost]
-        [Route("api/Employees/{id}/{userID}")]
-        public string Post(employeesShifts shift)
+        [Route("api/Employees/{userID}")]
+        public string Post(employeesShifts shift, int userID)
         {
-            bl.addEmployeesShift(shift);
+            bl.addEmployeesShift(shift, userID);
             return "EMP SHIFT ADDED";
         }
 

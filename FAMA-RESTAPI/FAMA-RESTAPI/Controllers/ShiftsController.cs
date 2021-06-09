@@ -13,22 +13,36 @@ namespace FAMA_RESTAPI.Controllers
     public class ShiftsController : ApiController
     {
         private static shiftsBL bl = new shiftsBL();
+
         // GET: api/Shifts
-        public IEnumerable<shiftsWithEmployees> Get()
+        [HttpGet]
+        [Route("api/Shifts")]
+        public IEnumerable<shifts> Get()
         {
             return bl.getAllShifts();
         }
 
+        [HttpGet]
+        [Route("api/Shifts/all/{userID}")]
+        public IEnumerable<shiftsWithEmployees> GetAll(int userID)
+        {
+            return bl.getAllShiftsAction(userID);
+        }
+
         // GET: api/Shifts/5
-        public shiftsWithEmployees Get(int id)
+        [HttpGet]
+        [Route("api/Shifts/{id}")]
+        public shifts Get(int id)
         {
             return bl.getShifts(id);
         }
 
         // POST: api/Shifts
-        public string Post(shifts shift)
+        [HttpPost]
+        [Route("api/Shifts/{userID}")]
+        public string Post(shifts shift, int userID)
         {
-            bl.postShifts(shift);
+            bl.postShifts(shift, userID);
             return "SHF SHIFT ADDED";
         }
 

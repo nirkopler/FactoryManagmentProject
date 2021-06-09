@@ -8,37 +8,53 @@ namespace FAMA_RESTAPI.Models
     public class shiftsBL
     {
         famaDBEntities db = new famaDBEntities();
+        private static logsCheck log = new logsCheck();
 
-        public IEnumerable<shiftsWithEmployees> getAllShifts()
+        public IEnumerable<shifts> getAllShifts()
         {
-            List<shiftsWithEmployees> shiftList = new List<shiftsWithEmployees>();
-            foreach (var shf in db.shifts)
-            {
-                shiftsWithEmployees shift = new shiftsWithEmployees();
-                shift.ID = shf.ID;
-                shift.date = shf.date;
-                shift.startTime = shf.startTime;
-                shift.endTime = shf.endTime;
-                shift.empList = new List<employees>();
-                foreach (var emp in db.employeesShifts.Where(s => s.shiftID == shf.ID))
+            return db.shifts;
+        }
+        public IEnumerable<shiftsWithEmployees> getAllShiftsAction(int userID)
+        {
+            famaDBEntities db = new famaDBEntities();
+            //add user action
+            log.addActionLog(userID);
+            //Check user actions
+            if (log.checkLogs(userID)) { 
+                List<shiftsWithEmployees> shiftList = new List<shiftsWithEmployees>();
+                foreach (var shf in db.shifts)
                 {
-                    var currentEmp = db.employees.Where(e => e.ID == emp.employeeID).First();
-                    shift.empList.Add(currentEmp);
+                    shiftsWithEmployees shift = new shiftsWithEmployees();
+                    shift.ID = shf.ID;
+                    shift.date = shf.date;
+                    shift.startTime = shf.startTime;
+                    shift.endTime = shf.endTime;
+                    shift.empList = new List<employees>();
+                    foreach (var emp in db.employeesShifts.Where(s => s.shiftID == shf.ID))
+                    {
+                        var currentEmp = db.employees.Where(e => e.ID == emp.employeeID).First();
+                        shift.empList.Add(currentEmp);
+                    }
+                    shiftList.Add(shift);
                 }
-                shiftList.Add(shift);
-            };
-            return shiftList;
+                return shiftList;
+            } else { return null; }
         }
 
-        public shiftsWithEmployees getShifts(int id)
+        public shifts getShifts(int id)
         {
             return getAllShifts().Where(s => s.ID == id).First();
         }
 
-        public void postShifts(shifts shift)
+        public void postShifts(shifts shift, int userID)
         {
-            db.shifts.Add(shift);
-            db.SaveChanges();
+            //add user action
+            log.addActionLog(userID);
+            //Check user actions
+            if (log.checkLogs(userID)) { 
+                db.shifts.Add(shift);
+                db.SaveChanges();
+            }
         }
     }
 }

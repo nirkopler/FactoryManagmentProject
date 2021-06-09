@@ -6,21 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--use app.js functions-->
     <script src="..\..\app.js"></script>
-    <title>Departments Main Page</title>
+    <title>Shifts Main Page</title>
 </head>
 <body>
-    <h1>Departments - Main</h1>
-    <input type="button" value="addDepartment" onclick="window.location.href = 'addDepartment.html?userId=' + userId;">
+    <h1>Shifts - Main</h1>
+    <input type="button" value="addShift" onclick="window.location.href = 'addShift.html?userId=' + userId;">
     <table id="tablePlace">
         <tr id="tableHeader">
-            <th>Name</th>
-            <th>Manager ID</th>
-            <th>Actions</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Employees</th>
         </tr>
-        <!--Departments table here-->
+        <!--Shifts table here-->
     </table>
 </body>
 <script>
-    window.onload = getAllDepartmentsData();
+    window.onload = getAllShiftsData();
 </script>
 </html>

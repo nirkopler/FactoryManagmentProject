@@ -40,15 +40,33 @@ namespace FAMA_RESTAPI.Models
             } else { return null; }
         }
 
-        public employeesWithShifts getEmployees(int id, int userID)
+        public IEnumerable<employeesWithShifts> empSearchResult(string inp, string by, int userID)
         {
-            return geAllEmployees(userID).Where(emp => emp.ID == id).FirstOrDefault();
+            List<employeesWithShifts> result = new List<employeesWithShifts>();
+            switch (by)
+            {
+            case "fname":
+                result = geAllEmployees(userID).Where(emp => emp.fullname.Split(' ')[0] == inp).ToList();
+                break;
+            case "lname":
+                result = geAllEmployees(userID).Where(emp => emp.fullname.Split(' ')[1] == inp).ToList();
+                break;
+            case "dep":
+                result = geAllEmployees(userID).Where(emp => emp.departmentName == inp).ToList();
+                break;
+            }
+            return result;
         }
 
-        public void addEmployeesShift(employeesShifts shift)
+        public void addEmployeesShift(employeesShifts shift, int userID)
         {
-            db.employeesShifts.Add(shift);
-            db.SaveChanges();
+            //add user action
+            log.addActionLog(userID);
+            //Check user actions
+            if (log.checkLogs(userID)) { 
+                db.employeesShifts.Add(shift);
+                db.SaveChanges();
+            }
         }
 
         public void putEmployees(int id, int userID, employees emp)
