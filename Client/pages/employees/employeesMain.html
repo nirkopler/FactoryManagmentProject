@@ -9,27 +9,32 @@
     <title>Employees Main Page</title>
 </head>
 <body>
-    <h1>Employees - Main</h1>
-    <span>Search: </span>
-    <span>By: </span><select id="searchByInp">
-        <option value="fname">First Name</option>
-        <option value="lname">Last Name</option>
-        <option value="dep">Department</option>
-    </select>
-    <input type="text" id="searchInp">
-    <input type="button" value="search" 
-    onclick="window.location.href = 'searchResult.html?userId='+userId+'&'+'inp='+searchInp.value+'&'+'by='+searchByInp.value;">
-    
-    <table id="tablePlace">
-        <tr id="tableHeader">
-            <th>Name</th>
-            <th>Start Work Year</th>
-            <th>Department</th>
-            <th>is Manager</th>
-            <th>Shifts</th>
-        </tr>
-        <!--Employees table here-->
-    </table>
+    <div class="container">
+        <h1 class="is-center">Employees - Main</h1>
+        <div class="row">
+            <span class="col-1">Search By: </span>
+            <select class="col-2" id="searchByInp">
+                <option value="fname">First Name</option>
+                <option value="lname">Last Name</option>
+                <option value="dep">Department</option>
+            </select>
+            <input class="col" type="text" id="searchInp">
+            <input class="col-2 button success" type="button" value="search" 
+            onclick="window.location.href = 'searchResult.html?userId='+userId+'&'+'inp='+searchInp.value+'&'+'by='+searchByInp.value;"> 
+        </div>
+        
+        <table id="tablePlace" class="bd-light">
+            <tr id="tableHeader">
+                <th class="text-center">Name</th>
+                <th class="text-center">Start Work Year</th>
+                <th class="text-center">Department</th>
+                <th class="text-center">is Manager</th>
+                <th class="text-center">Shifts</th>
+                <th class="text-center">Actions</th>
+            </tr>
+            <!--Employees table here-->
+        </table>
+    </div>
 </body>
 <script>
     window.onload = getAllEmployeesData();

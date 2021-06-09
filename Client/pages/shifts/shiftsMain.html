@@ -9,16 +9,22 @@
     <title>Shifts Main Page</title>
 </head>
 <body>
-    <h1>Shifts - Main</h1>
-    <input type="button" value="addShift" onclick="window.location.href = 'addShift.html?userId=' + userId;">
-    <table id="tablePlace">
-        <tr id="tableHeader">
-            <th>Date</th>
-            <th>Time</th>
-            <th>Employees</th>
-        </tr>
-        <!--Shifts table here-->
-    </table>
+    <div class="container is-center">
+        <div class="col-9">
+            <h1>Shifts - Main</h1>
+            <div class="row">
+                <input class="col-3 button primary" type="button" value="addShift" onclick="window.location.href = 'addShift.html?userId=' + userId;">
+            </div>
+            <table id="tablePlace" class="bd-light">
+                <tr id="tableHeader">
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Employees</th>
+                </tr>
+                <!--Shifts table here-->
+            </table>
+        </div>
+    </div>
 </body>
 <script>
     window.onload = getAllShiftsData();

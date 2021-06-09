@@ -8,12 +8,16 @@
     <script src="..\..\app.js"></script>
     <title>Add Shift To Employee</title>
 </head>
-<body>
-
-    <span>Select Shift</span><select id="shiftsInp">
-        <!--Options From DB-->
-    </select><br>
-    <input type="button" value="add shift" id="saveBtn" onclick="addShiftToEmployee()">
+<body class="is-full-screen is-full-width is-vertical-align">
+    <div class="container is-center">
+        <div class="col-6">
+            <h1>Add Shift To Employee</h1>
+            <span>Select Shift</span><select id="shiftsInp">
+                <!--Options From DB-->
+            </select><br>
+            <input type="button" value="add shift" id="saveBtn" onclick="addShiftToEmployee()">
+        </div>
+    </div>
 </body>
 <script>
     window.onload = loadEditShiftEmployee();

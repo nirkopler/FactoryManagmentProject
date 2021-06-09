@@ -6,7 +6,11 @@ window.onload = () => {
     const searchByInp = document.getElementById("searchByInp");
 }
 
-//Get urlParams On Each Page
+//add CSS to all pages 
+chota_css = '<link rel="stylesheet" href="https://unpkg.com/chota@latest">';
+document.head.innerHTML += chota_css;
+
+//Get urlParams On Each PageS
 const urlParams = new URLSearchParams(window.location.search);
 const userId = urlParams.get('userId');
 const empId = urlParams.get('empId');
@@ -62,6 +66,7 @@ async function getAllEmployeesData() {
         //create row for each employee
         for (let d of data) {
             const newRow = tablePlace.insertRow();
+            newRow.setAttribute("class", "bd-light")
             const fullName = newRow.insertCell().innerText = d.fullname;
             const startWorkYear = newRow.insertCell().innerText = d.startWorkYear;
             const departmentName = newRow.insertCell().innerText = d.departmentName;
@@ -80,17 +85,20 @@ async function getAllEmployeesData() {
             //EDIT
             const editLink = document.createElement("a");
             editLink.innerText = "Edit";
+            editLink.setAttribute("class", "button col");
             editLink.setAttribute("href", 'editEmployee.html?userId='+userId+'&'+'empId='+d.ID);
             Actions.appendChild(editLink);
             //DELETE
             const deleteLink = document.createElement("a");
             deleteLink.innerText = "Delete";
+            deleteLink.setAttribute("class", "button error col");
             deleteLink.setAttribute("onclick", 'deleteEmployee('+ d.ID +')');
             deleteLink.setAttribute("href", "#");
             Actions.appendChild(deleteLink);
             //ADD SHIFT TO EMPLOYEE
             const addShiftLink = document.createElement("a");
             addShiftLink.innerText = "Add Shift To Emp";
+            addShiftLink.setAttribute("class", "button primary col");
             addShiftLink.setAttribute("href", 'addShiftEmployee.html?userId='+userId+'&'+'empId='+d.ID);
             Actions.appendChild(addShiftLink);
         }
@@ -192,6 +200,7 @@ async function loadSearchEmployee() {
             //create row for each employee
             for (let d of data) {
                 const newRow = tablePlace.insertRow();
+                newRow.setAttribute("class", "bd-light")
                 const fullName = newRow.insertCell().innerText = d.fullname;
                 const startWorkYear = newRow.insertCell().innerText = d.startWorkYear;
                 const departmentName = newRow.insertCell().innerText = d.departmentName;
@@ -230,6 +239,7 @@ async function getAllDepartmentsData() {
         //create row for each department
         for (let d of data){
             const newRow = tablePlace.insertRow();
+            newRow.setAttribute("class", "bd-light")
             const name = newRow.insertCell().innerText = d.name;
             const managerID = newRow.insertCell().innerText = d.managerID;
 
@@ -238,12 +248,14 @@ async function getAllDepartmentsData() {
             //EDIT
             const editLink = document.createElement("a");
             editLink.innerText = "Edit";
+            editLink.setAttribute("class", "button col");
             editLink.setAttribute("href", 'editDepartment.html?userId='+userId+'&'+'depId='+d.ID);
             Actions.appendChild(editLink);
             //DELETE - if there is NO Epmloyees in certain Department
             if(!d.areAnyEmployees){
                 const deleteLink = document.createElement("a");
                 deleteLink.innerText = "Delete";
+                deleteLink.setAttribute("class", "button col error");
                 deleteLink.setAttribute("onclick", 'deleteDepartment('+ d.ID +')');
                 deleteLink.setAttribute("href", "#");
                 Actions.appendChild(deleteLink);
@@ -315,6 +327,7 @@ async function getAllShiftsData() {
         //create row for each shifts
         for (let d of data) {
             const newRow = tablePlace.insertRow();
+            newRow.setAttribute("class", "bd-light")
             const date = newRow.insertCell().innerText = d.date.slice(0,-9);
             const time = newRow.insertCell().innerText = d.startTime + " - " + d.endTime;
             const employees = newRow.insertCell();
@@ -328,6 +341,7 @@ async function getAllShiftsData() {
                 //add edit employee link
                 const editLink = document.createElement("a");
                 editLink.innerText = "Edit Employee";
+                editLink.setAttribute("class", "col-5 button")
                 editLink.setAttribute("href", '../employees/editEmployee.html?userId='+userId+'&'+'empId='+e.ID);
                 newEmployee.appendChild(editLink);
                 child.appendChild(newEmployee);

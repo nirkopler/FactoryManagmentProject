@@ -9,16 +9,24 @@
     <title>Departments Main Page</title>
 </head>
 <body>
-    <h1>Departments - Main</h1>
-    <input type="button" value="addDepartment" onclick="window.location.href = 'addDepartment.html?userId=' + userId;">
-    <table id="tablePlace">
-        <tr id="tableHeader">
-            <th>Name</th>
-            <th>Manager ID</th>
-            <th>Actions</th>
-        </tr>
-        <!--Departments table here-->
-    </table>
+    <div class="container is-center">
+        <div class="col-9">
+            <h1 class="text-center">Departments - Main</h1>
+            <div class="row">
+                <input class="col-3 button success" type="button"
+                value="addDepartment" onclick="window.location.href = 'addDepartment.html?userId=' + userId;">
+            </div>
+
+            <table id="tablePlace" class="bd-light">
+                <tr id="tableHeader">
+                    <th>Name</th>
+                    <th>Manager ID</th>
+                    <th>Actions</th>
+                </tr>
+                <!--Departments table here-->
+            </table>
+        </div>
+    </div>
 </body>
 <script>
     window.onload = getAllDepartmentsData();

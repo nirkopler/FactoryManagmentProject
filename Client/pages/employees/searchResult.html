@@ -9,17 +9,19 @@
     <title>Search Result</title>
 </head>
 <body>
+    <div class="container">
     <h1>Search Result</h1>
-    <table id="tablePlace">
-        <tr id="tableHeader">
-            <th>Name</th>
-            <th>Start Work Year</th>
-            <th>Department</th>
-            <th>is Manager</th>
-            <th>Shifts</th>
-        </tr>
-        <!--Employees table here-->
-    </table>
+        <table id="tablePlace" class="bd-light">
+            <tr id="tableHeader">
+                <th class="text-center">Name</th>
+                <th class="text-center">Start Work Year</th>
+                <th class="text-center">Department</th>
+                <th class="text-center">is Manager</th>
+                <th class="text-center">Shifts</th>
+            </tr>
+            <!--Employees table here-->
+        </table>
+    </div>
 </body>
 <script>
     window.onload = loadSearchEmployee();

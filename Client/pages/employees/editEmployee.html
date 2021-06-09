@@ -8,13 +8,18 @@
     <script src="..\..\app.js"></script>
     <title>Edit Employee</title>
 </head>
-<body>
-    <span>Name</span><input type="text" id="nameInp"><br>
-    <span>Start Work Year</span><input type="text" id="startWYInp"><br>
-    <span>Department</span><select id="departmentInp">
-        <!--Options From DB-->
-    </select><br>
-    <input type="button" value="save changes" id="saveBtn" onclick="editEmployee()">
+<body class="is-full-screen is-full-width is-vertical-align">
+    <div class="container is-center">
+        <div class="col-6">
+            <h1>Edit Employee</h1>
+            <span>Name</span><input type="text" id="nameInp"><br>
+            <span>Start Work Year</span><input type="text" id="startWYInp"><br>
+            <span>Department</span><select id="departmentInp">
+                <!--Options From DB-->
+            </select><br>
+            <input type="button" value="save changes" id="saveBtn" onclick="editEmployee()">
+        </div>
+    </div>
 </body>
 <script>
     window.onload = loadEditEmployee();

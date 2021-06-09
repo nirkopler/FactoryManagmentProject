@@ -7,6 +7,7 @@ this is a true **FullStack** project that uses technologies like:
 * JS - Client
 * HTML5
 * CSS3
+* ChotaCSS - lightweight CSS Framework
 
 ## Progress :muscle:
 ### 9/6/2021
@@ -14,6 +15,7 @@ this is a true **FullStack** project that uses technologies like:
 * added add shift to employee page and action
 * added in server (employeesBL) searchEmployee function
 * added search to employee main page
+* added ChotaCSS for easy and productive UI
 
 ### 7/6/2021
 * added departments page with table
@@ -36,4 +38,3 @@ this is a true **FullStack** project that uses technologies like:
 
 ## Things to complete :smirk: :fire:
 * add logout & display username on EACH page
-* choose UI framework
