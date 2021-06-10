@@ -97,6 +97,7 @@ async function loginCheck() {
     } else {alert("worng user / pass")};
 }
 
+//logout button
 function logoutBtn() {
     let file = window.location.pathname;
     file = file.split("/").pop();
