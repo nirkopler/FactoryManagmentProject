@@ -8,18 +8,23 @@
     <script src="..\..\app.js"></script>
     <title>Add Shift</title>
 </head>
-<body class="is-full-screen is-full-width is-vertical-align">
-    <div class="container is-center">
-        <div class="col-6">
-            <h1>Add Shift</h1>
-            <span>Date</span><input type="date" id="dateInp"><br>
-            <span>Time</span>
-            <div class="row">
-                <input class="col-5" type="time" id="startTimeInp"><h3 class="col-2 text-center"> - </h3><input class="col-5" type="time" id="endTimeInp"><br>
+<body>
+    <div class="is-full-screen is-full-width is-vertical-align">
+        <div class="container is-center">
+            <div class="col-6">
+                <h1>Add Shift</h1>
+                <span>Date</span><input type="date" id="dateInp"><br>
+                <span>Time</span>
+                <div class="row">
+                    <input class="col-5" type="time" id="startTimeInp"><h3 class="col-2 text-center"> - </h3><input class="col-5" type="time" id="endTimeInp"><br>
+                </div>
+                </select><br>
+                <input class="button primary" type="button" value="add Shift" id="saveBtn" onclick="addShift()">
             </div>
-            </select><br>
-            <input class="button primary" type="button" value="add Shift" id="saveBtn" onclick="addShift()">
         </div>
     </div>
 </body>
+<script>
+    window.onload = loadNav();
+</script>
 </html>

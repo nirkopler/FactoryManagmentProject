@@ -8,15 +8,20 @@
     <script src="..\..\app.js"></script>
     <title>Add Department</title>
 </head>
-<body class="is-full-screen is-full-width is-vertical-align">
-    <div class="container is-center">
-        <div class="col-6">
-            <h1>Add Department</h1>
-            <span>Name</span><input type="text" id="nameInp"><br>
-            <span>ManagerID</span><input type="text" id="managerIDInp"><br>
-            </select><br>
-            <input class="button primary" type="button" value="add department" id="saveBtn" onclick="addDepartment()">
+<body>
+    <div class="is-full-screen is-full-width is-vertical-align">
+        <div class="container is-center">
+            <div class="col-6">
+                <h1>Add Department</h1>
+                <span>Name</span><input type="text" id="nameInp"><br>
+                <span>ManagerID</span><input type="text" id="managerIDInp"><br>
+                </select><br>
+                <input class="button primary" type="button" value="add department" id="saveBtn" onclick="addDepartment()">
+            </div>
         </div>
     </div>
 </body>
+<script>
+    window.onload = loadNav();
+</script>
 </html>

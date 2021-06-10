@@ -13,7 +13,7 @@
         <div class="col-9">
             <h1 class="text-center">Departments - Main</h1>
             <div class="row">
-                <input class="col-3 button success" type="button"
+                <input class="col-3 button primary" type="button"
                 value="addDepartment" onclick="window.location.href = 'addDepartment.html?userId=' + userId;">
             </div>
 
@@ -29,6 +29,6 @@
     </div>
 </body>
 <script>
-    window.onload = getAllDepartmentsData();
+    window.onload = getAllDepartmentsData(), loadNav();
 </script>
 </html>

@@ -4,12 +4,18 @@
 a web site for a factory managment
 this is a true **FullStack** project that uses technologies like:
 * ASP.NET - Server
+* SQL - DB
 * JS - Client
 * HTML5
 * CSS3
 * ChotaCSS - lightweight CSS Framework
 
 ## Progress :muscle:
+### 10/6/2021 - Updated UI
+* add logout & display username on EACH page
+* fixed ui bugs
+* added "component" like navbar
+
 ### 9/6/2021 - DONE project base
 * added shifts page: table, add shift (to db) + add link to index page
 * added add shift to employee page and action
@@ -37,4 +43,4 @@ this is a true **FullStack** project that uses technologies like:
 * created Client architecture
 
 ## Things to complete :smirk: :fire:
-* add logout & display username on EACH page
+* NOTHING - completed project :smile:

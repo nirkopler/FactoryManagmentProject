@@ -8,15 +8,20 @@
     <script src="app.js"></script>
     <title>Homepage</title>
 </head>
-<body class="is-full-screen is-full-width is-vertical-align">
-    <div class="container">
-        <h1 class="is-center">Homepage</h1>
-        <div class="row is-center">
-            <a href="#" class="card col-3 text-center" onclick="window.location.href = 'pages/employees/employeesMain.html?userId=' + userId;">employees</a>
-            <a href="#" class="card col-3 text-center" onclick="window.location.href = 'pages/departments/departmentsMain.html?userId=' + userId;">departments</a>
-            <a href="#" class="card col-3 text-center" onclick="window.location.href = 'pages/shifts/shiftsMain.html?userId=' + userId;">shifts</a>
+<body>
+        <div class="is-full-screen is-full-width is-vertical-align">
+        <div class="container">
+            <h1 class="is-center">Homepage</h1>
+            <div class="row is-center">
+                <a href="#" class="card col-3 text-center" onclick="window.location.href = 'pages/employees/employeesMain.html?userId=' + userId;">employees</a>
+                <a href="#" class="card col-3 text-center" onclick="window.location.href = 'pages/departments/departmentsMain.html?userId=' + userId;">departments</a>
+                <a href="#" class="card col-3 text-center" onclick="window.location.href = 'pages/shifts/shiftsMain.html?userId=' + userId;">shifts</a>
+            </div>
+            <div class="row is-center"><input class="button error" type="button" value="Logout" onclick="logoutBtn()"></div>
         </div>
-        <div class="row is-center"><input class="button error" type="button" value="Logout" onclick="logoutBtn()"></div>
     </div>
 </body>
+<script>
+    window.onload = loadNav();
+</script>
 </html>

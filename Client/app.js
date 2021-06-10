@@ -6,6 +6,51 @@ window.onload = () => {
     const searchByInp = document.getElementById("searchByInp");
 }
 
+//create navbar on each page
+function loadNav() {
+    //add container to top of BODY
+    const navbarConatiner = document.createElement("div");
+    navbarConatiner.setAttribute("class", "container");
+    document.body.insertBefore(navbarConatiner, document.body.firstChild);
+    
+    //create navbar
+    const navbar = document.createElement("div");
+    navbar.style.backgroundColor = "red";
+    navbar.setAttribute("class", "row is-center");
+    
+    //create logout button
+    const logoutBtn = document.createElement("button");
+    logoutBtn.setAttribute("onclick", 'logoutBtn()');
+    logoutBtn.setAttribute("class", "col-2 is-marginless")
+    logoutBtn.innerHTML = "Logout";
+
+    //create username
+    const navname = document.createElement("span");
+    navname.setAttribute("class", "col-2 is-marginless")
+    navname.style.color = "white";
+    navname.innerHTML = sessionStorage.getItem('username');
+    
+    //reset file path
+    let file = window.location.pathname;
+    file = file.split("/").pop();
+    let url;
+    if(file === "index.html"){url = "index.html?userId=" + userId}
+    else{url = "../../index.html?userId=" + userId}
+    
+    //create logo in center
+    const navLogo = document.createElement("a");
+    navLogo.setAttribute("class", "col-6 text-center is-marginless");
+    navLogo.setAttribute("href", url)
+    navLogo.style.fontSize = "30px";
+    navLogo.style.color = "white";
+    navLogo.innerHTML = "FAMA";
+    
+    navbar.appendChild(navname);
+    navbar.appendChild(navLogo);
+    navbar.appendChild(logoutBtn);
+    navbarConatiner.appendChild(navbar);
+}
+
 //add CSS to all pages 
 chota_css = '<link rel="stylesheet" href="https://unpkg.com/chota@latest">';
 document.head.innerHTML += chota_css;
@@ -47,12 +92,19 @@ async function loginCheck() {
         //check if user allowed to enter
         if(dataLog){
         window.location.href = "index.html?userId=" + data.ID;
+        const username = sessionStorage.setItem('username', data.fullname);
         } else {alert("too many actions per day")}
     } else {alert("worng user / pass")};
 }
 
 function logoutBtn() {
-    window.location.href = "login.html";
+    let file = window.location.pathname;
+    file = file.split("/").pop();
+    let url;
+    console.log(file)
+    if(file === "index.html"){url = "login.html"}
+    else{url = "../../login.html"}
+    window.location.href = url;
 }
 
 // ------------------------- EMPLOYEES -------------------------
