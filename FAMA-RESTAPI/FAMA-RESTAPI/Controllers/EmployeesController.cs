@@ -14,7 +14,7 @@ namespace FAMA_RESTAPI.Controllers
     {
         private static employeesBL bl = new employeesBL();
 
-        // GET: api/Employees
+        // GET: api/Employees/{userID}
         [HttpGet]
         [Route("api/Employees/{userID}")]
         public IEnumerable<employeesWithShifts> Get(int userID)
@@ -22,7 +22,7 @@ namespace FAMA_RESTAPI.Controllers
             return bl.geAllEmployees(userID);
         }
 
-        // GET: api/Employees/5
+        // GET: api/Employees/search/{inp}/{by}/{userID}
         [HttpGet]
         [Route("api/Employees/search/{inp}/{by}/{userID}")]
         public IEnumerable<employeesWithShifts> Get(string inp, string by, int userID)
@@ -30,7 +30,7 @@ namespace FAMA_RESTAPI.Controllers
             return bl.empSearchResult(inp, by, userID);
         }
 
-        // POST: api/Employees
+        // POST: api/Employees/{userID}
         [HttpPost]
         [Route("api/Employees/{userID}")]
         public string Post(employeesShifts shift, int userID)
@@ -39,7 +39,7 @@ namespace FAMA_RESTAPI.Controllers
             return "EMP SHIFT ADDED";
         }
 
-        // PUT: api/Employees/5
+        // PUT: api/Employees/{id}/{userID}
         [HttpPut]
         [Route("api/Employees/{id}/{userID}")]
         public string Put(int id, int userID, employees emp)
@@ -48,7 +48,7 @@ namespace FAMA_RESTAPI.Controllers
             return "EMP PUT COMPLETED";
         }
 
-        // DELETE: api/Employees/5
+        // DELETE: api/Employees/{id}/{userID}
         [HttpDelete]
         [Route("api/Employees/{id}/{userID}")]
         public string Delete(int id, int userID)

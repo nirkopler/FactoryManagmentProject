@@ -38,7 +38,7 @@ namespace FAMA_RESTAPI.Controllers
             return bl.getDepartments(id);
         }
 
-        // POST: api/Departments
+        // POST: api/Departments/{userID}
         [HttpPost]
         [Route("api/Departments/{userID}")]
         public string Post(int userID, departments dep)
@@ -47,7 +47,7 @@ namespace FAMA_RESTAPI.Controllers
             return "DEP DEPARTMENT CREATED";
         }
 
-        // PUT: api/Departments/5
+        // PUT: api/Departments/{id}/{userID}
         [HttpPut]
         [Route("api/Departments/{id}/{userID}")]
         public string Put(int id, int userID, departments dep)
@@ -56,7 +56,7 @@ namespace FAMA_RESTAPI.Controllers
             return "DEP DEPARTMENT EDITED";
         }
 
-        // DELETE: api/Departments/5
+        // DELETE: api/Departments/{id}/{userID}
         [HttpDelete]
         [Route("api/Departments/{id}/{userID}")]
         public string Delete(int id, int userID)

@@ -12,7 +12,6 @@ namespace FAMA_RESTAPI.Models
 
         public IEnumerable<employeesWithShifts> geAllEmployees(int userID)
         {
-            // ----!!!----- NEED TO ADD DB IN FUNCTION
             //add user action
             log.addActionLog(userID);
             //Check user actions

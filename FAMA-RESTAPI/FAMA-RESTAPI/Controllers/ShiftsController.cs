@@ -22,6 +22,7 @@ namespace FAMA_RESTAPI.Controllers
             return bl.getAllShifts();
         }
 
+        // GET: api/Shifts//all/{userID}
         [HttpGet]
         [Route("api/Shifts/all/{userID}")]
         public IEnumerable<shiftsWithEmployees> GetAll(int userID)
@@ -37,23 +38,13 @@ namespace FAMA_RESTAPI.Controllers
             return bl.getShifts(id);
         }
 
-        // POST: api/Shifts
+        // POST: api/Shifts/{userID}
         [HttpPost]
         [Route("api/Shifts/{userID}")]
         public string Post(shifts shift, int userID)
         {
             bl.postShifts(shift, userID);
             return "SHF SHIFT ADDED";
-        }
-
-        // PUT: api/Shifts/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/Shifts/5
-        public void Delete(int id)
-        {
         }
     }
 }
