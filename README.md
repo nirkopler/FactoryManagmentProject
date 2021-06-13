@@ -42,5 +42,9 @@ this is a true **FullStack** project that uses technologies like:
 * created DB architecture
 * created Client architecture
 
-## Things to complete :smirk: :fire:
-* NOTHING - completed project :smile:
+## ScreenShots
+Login page:
+![Image of Login Page](https://github.com/nirkopler/FactoryManagmentProject/blob/master/LoginPageS.png)
+
+Employees Main Data Page
+![Image of EmployeesMain Page](https://github.com/nirkopler/FactoryManagmentProject/blob/master/EmployeesMainS.png)
